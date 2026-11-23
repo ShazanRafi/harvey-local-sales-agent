@@ -39,6 +39,22 @@ def create_sales_graph(client: OllamaClient | None = None):
             "icp": state.get("icp", {}),
         }
         value = client.generate_json(_prompt("buying_signals.txt"), str(payload))
+        signals = value.get("signals")
+        if not isinstance(signals, list):
+            raw = state.get("prospect", {}).get("raw_data", {})
+            if isinstance(raw, dict):
+                signals = [
+                    {
+                        "name": str(key),
+                        "classification": "medium",
+                        "reason": f"Stored prospect data reports {key}={value_item}.",
+                    }
+                    for key, value_item in raw.items()
+                    if key not in {"source"} and value_item not in (None, "")
+                ]
+            else:
+                signals = []
+            value = {"signals": signals}
         return {"buying_signals": value}
 
     def problem(state: SalesState) -> dict:
@@ -84,4 +100,31 @@ def create_sales_graph(client: OllamaClient | None = None):
     graph.add_edge("problem", "score")
     graph.add_edge("score", "outreach")
     graph.add_edge("outreach", END)
+    return graph.compile()
+
+
+def create_profile_graph(client: OllamaClient | None = None):
+    client = client or OllamaClient()
+
+    def business_profile(state: SalesState) -> dict:
+        value = client.generate_json(
+            _prompt("business_profile.txt"),
+            f"Stored company and product data:\n{state.get('product', {})}",
+        )
+        return {"business_profile": value}
+
+    def product_icp(state: SalesState) -> dict:
+        payload = {
+            "business_profile": state.get("business_profile", {}),
+            "product": state.get("product", {}),
+        }
+        value = client.generate_json(_prompt("product_icp.txt"), str(payload))
+        return {"icp": value}
+
+    graph = StateGraph(SalesState)
+    graph.add_node("business_profile", business_profile)
+    graph.add_node("product_icp", product_icp)
+    graph.set_entry_point("business_profile")
+    graph.add_edge("business_profile", "product_icp")
+    graph.add_edge("product_icp", END)
     return graph.compile()

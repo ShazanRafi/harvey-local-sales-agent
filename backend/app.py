@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 
 from backend.database import connect, init_db
 from graph.reply_graph import create_reply_graph
-from graph.sales_graph import create_sales_graph
+from graph.sales_graph import create_profile_graph, create_sales_graph
 from llm.hardware import detect_hardware
 from llm.ollama_client import OllamaClient, OllamaUnavailable
 
@@ -98,7 +98,7 @@ def generate_profile(product_id: int):
     if not product:
         raise HTTPException(404, "Product not found")
     try:
-        graph = create_sales_graph(ollama())
+        graph = create_profile_graph(ollama())
         result = graph.invoke({
             "product": dict(product),
         })
