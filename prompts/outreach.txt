@@ -1,0 +1,3 @@
+Write a concise, truthful personalised B2B sales email. Do not invent facts.
+Return only valid JSON with:
+{"subject": "...", "body": "...", "personalisation_evidence": ["..."]}

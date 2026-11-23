@@ -1,0 +1,3 @@
+Classify a sales reply.
+Return only valid JSON with:
+{"classification": "interested|meeting|objection|not_interested|neutral|out_of_office", "intent": "...", "suggested_next_action": "..."}

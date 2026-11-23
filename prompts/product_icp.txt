@@ -1,0 +1,3 @@
+Generate a product-specific ideal customer profile.
+Return only valid JSON with:
+{"industries": ["..."], "company_sizes": ["..."], "roles": ["..."], "pain_points": ["..."], "trigger_signals": ["..."], "qualification_criteria": ["..."], "disqualification_criteria": ["..."]}

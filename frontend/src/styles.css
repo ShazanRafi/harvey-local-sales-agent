@@ -1,0 +1,21 @@
+:root { font-family: Inter, system-ui, sans-serif; color: #172033; background: #f3f5f8; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1180px; margin: auto; padding: 28px; }
+header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dfe4ec; padding-bottom: 20px; }
+h1 { margin: 4px 0 0; font-size: 32px; } h2 { margin-top: 0; } h3 { margin-bottom: 8px; }
+.eyebrow { color: #68758a; font-size: 12px; letter-spacing: 2px; }
+.status { border-radius: 999px; padding: 9px 13px; font-weight: 700; font-size: 13px; }
+.status.ok { background: #dcf8e7; color: #146b3a; } .status.bad { background: #ffe1df; color: #9b3027; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+article, .workspace, .alert { background: white; border: 1px solid #dde3eb; border-radius: 14px; }
+article { padding: 18px; } label { display: block; font-weight: 700; font-size: 13px; margin: 12px 0; }
+label span { color: #8a94a4; } input, textarea { display: block; width: 100%; margin-top: 7px; border: 1px solid #ccd4df; border-radius: 8px; padding: 10px; font: inherit; }
+textarea { min-height: 82px; resize: vertical; } button { width: 100%; border: 0; border-radius: 8px; background: #1e5ad6; color: white; padding: 11px; font-weight: 800; cursor: pointer; }
+.alert { margin-top: 16px; padding: 12px; background: #fff1ef; border-color: #edb5ad; color: #8a2c24; }
+.workspace { display: grid; grid-template-columns: 2fr 1fr; min-height: 300px; overflow: hidden; }
+.workspace > * { padding: 18px; } aside { border-left: 1px solid #dde3eb; background: #fafbfc; }
+pre { max-height: 560px; overflow: auto; background: #151b27; color: #e8edf7; border-radius: 8px; padding: 16px; white-space: pre-wrap; }
+.muted { color: #7b8493; } dl { display: grid; grid-template-columns: 1fr 1.4fr; gap: 7px; } dt { color: #737e8e; } dd { margin: 0; font-weight: 700; }
+.traces div { display: flex; justify-content: space-between; border-top: 1px solid #e6e9ef; padding: 8px 0; font-size: 13px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .workspace { grid-template-columns: 1fr; } aside { border-left: 0; border-top: 1px solid #dde3eb; } }

@@ -1,0 +1,3 @@
+Generate a specific, evidence-based problem statement for the prospect.
+Return only valid JSON with:
+{"problem": "...", "business_impact": "...", "hypothesis": "...", "evidence": ["..."]}

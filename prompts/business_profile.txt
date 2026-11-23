@@ -1,0 +1,3 @@
+Create a concise local business profile from the provided company data.
+Return only valid JSON with:
+{"summary": "...", "value_proposition": "...", "customer_segments": ["..."], "strengths": ["..."], "assumptions": ["..."]}

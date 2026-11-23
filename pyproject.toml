@@ -3,13 +3,13 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sellbird"
+name = "harvey-local-sales-agent"
 version = "0.4.0"
-description = "Sellbird: the open-source outreach platform. Finds companies and the people who decide, writes personal cold email, sends it and handles replies."
+description = "A local, multi-product AI sales agent powered by Ollama."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "AGPL-3.0-only"
-keywords = ["sales", "outreach", "ai-agent", "cold-email", "prospecting", "autonomous-agent", "claude"]
+keywords = ["sales", "outreach", "ai-agent", "prospecting", "ollama", "langgraph"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -36,7 +36,13 @@ dependencies = [
     "pytz>=2024.1",
     "fastapi>=0.115,<1",
     "uvicorn>=0.34,<1",
-    "mcp>=2.3,<3",
+    "langchain>=0.3,<2",
+    "langchain-community>=0.3,<1",
+    "langchain-ollama>=0.2,<2",
+    "langgraph>=0.2,<1",
+    "scrapy>=2.11,<3",
+    "sentence-transformers>=3.0,<6",
+    "psutil>=5.9,<8",
 ]
 
 [project.optional-dependencies]
@@ -51,12 +57,10 @@ Issues = "https://github.com/ethanplusai/sellbird/issues"
 Changelog = "https://github.com/ethanplusai/sellbird/blob/main/CHANGELOG.md"
 
 [project.scripts]
-sellbird = "sellbird.cli:main"
-# The old name, kept for a while so existing installs keep working (harvey/).
-harvey = "harvey.cli:main"
+harvey-local = "scripts.run_api:main"
 
 [tool.setuptools.packages.find]
-include = ["sellbird*", "harvey*"]
+include = ["backend*", "graph*", "llm*", "scripts*"]
 
 # The editable defaults an installed app seeds its home folder from
 # (sellbird/home.py). They land in <prefix>/share/sellbird.

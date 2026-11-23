@@ -1,0 +1,6 @@
+Inspect all supplied prospect facts and infer concrete buying signals.
+Convert relevant signals from fields such as booking method, hiring, growth, technology, website, role, and raw_data.
+Do not invent facts that are absent. Classify each inferred or supplied signal as high, medium, or low relevance.
+Use an empty signals array only when the supplied prospect data contains no usable buying-signal evidence.
+Return only valid JSON with:
+{"signals": [{"name": "...", "classification": "high|medium|low", "reason": "..."}]}
