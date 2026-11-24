@@ -36,6 +36,18 @@ npm run dev
 
 Open `http://127.0.0.1:5173`.
 
+## Dashboard
+
+The local dashboard has sections for:
+
+- **Overview** — product/prospect counts, model connection, workflow progress, and recent local inference activity.
+- **Products** — create products and review their generated business profile and ICP.
+- **Prospects** — add locally known prospect details, inspect buying signals and fit scores, and review email drafts.
+- **Replies** — classify a sample reply and see the suggested next action.
+- **Activity** — inspect Ollama traces and queued tasks.
+
+Email drafts are for review only; the app does not send email. Website URLs are stored as references and are not fetched by the product or prospect forms.
+
 ## Offline test
 
 Start Ollama and the API, disconnect the network, then run:
